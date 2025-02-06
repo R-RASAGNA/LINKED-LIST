@@ -1,0 +1,15 @@
+public class Solution {
+    public int getDecimalValue(ListNode head) {
+        int decimal = 0;
+        
+        // Traverse the linked list
+        while (head != null) {
+            // Left shift the current decimal value by 1 (multiply by 2)
+            decimal = decimal * 2 + head.val;
+            head = head.next;  // Move to the next node
+        }
+        
+        return decimal;
+    }
+}
+
