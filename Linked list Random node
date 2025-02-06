@@ -1,0 +1,30 @@
+
+
+public class Solution {
+    private ListNode head;
+    
+    public Solution(ListNode head) {
+        this.head = head;
+    }
+    
+    public int getRandom() {
+        ListNode current = head;
+        int result = current.val;
+        int count = 1;
+        
+        while (current.next != null) {
+            current = current.next;
+            count++;
+            
+            // Generate a random index from 1 to count
+            int randomIndex = (int) (Math.random() * count) + 1;
+            
+            // With probability 1 / randomIndex, replace the result
+            if (randomIndex == count) {
+                result = current.val;
+            }
+        }
+        
+        return result;
+    }
+}
