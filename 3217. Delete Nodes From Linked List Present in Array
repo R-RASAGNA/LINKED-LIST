@@ -1,0 +1,25 @@
+public class Solution {
+    public ListNode modifiedList(int[] nums, ListNode head) {
+        // Convert nums to a set for quick lookup
+        Set<Integer> toRemove = new HashSet<>();
+        for (int num : nums) {
+            toRemove.add(num);
+        }
+
+        // Dummy node helps us easily manage edge cases
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode current = dummy;
+
+        while (current.next != null) {
+            if (toRemove.contains(current.next.val)) {
+                // Remove the node by adjusting pointers
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+
+        return dummy.next;
+    }
+}
